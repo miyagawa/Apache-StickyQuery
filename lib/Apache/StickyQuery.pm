@@ -47,7 +47,7 @@ sub make_stickyquery {
     my %opt = map {
 	my $key = 'StickyQuery' . ucfirst($_);
 	my $val = $r->dir_config($key);
-	$val ? ($key => $val) : ();
+	defined $val ? ($key => $val) : ();
     } qw(abs regexp override);
     return HTML::StickyQuery->new(%opt);
 }
